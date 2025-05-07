@@ -1,0 +1,31 @@
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import TrainingPage from './pages/TrainingPage';
+import MembershipPage from './pages/MembershipPage';
+import ResourcesPage from './pages/ResourcesPage';
+import GalleryPage from './pages/GalleryPage';
+import FindSpecialistPage from './pages/FindSpecialistPage';
+import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="training" element={<TrainingPage />} />
+        <Route path="membership" element={<MembershipPage />} />
+        <Route path="resources" element={<ResourcesPage />} />
+        <Route path="gallery" element={<GalleryPage />} />
+        <Route path="find-specialist" element={<FindSpecialistPage />} />
+        <Route path="contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
+  );
+}
+
+export default App;
