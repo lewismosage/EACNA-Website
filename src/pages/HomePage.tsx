@@ -252,30 +252,8 @@ const HomePage = () => {
         </div>
       </Section>
 
-      {/* Partners Section */}
-      <Section background="light">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-primary-800">Our Partners</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            We work closely with organizations and institutions that share our commitment to improving neurological care for children.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-          {partners.map(partner => (
-            <div key={partner.id} className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img 
-                src={partner.logo} 
-                alt={`${partner.name} logo`} 
-                className="h-16 object-contain grayscale hover:grayscale-0 transition-all"
-              />
-            </div>
-          ))}
-        </div>
-      </Section>
-
       {/* CTA Section */}
-      <Section background="secondary" className="text-center text-white">
+      <Section background="white" className="text-center text-primary-800">
         <h2 className="text-3xl font-bold mb-6">Ready to Make a Difference?</h2>
         <p className="text-xl mb-8 max-w-2xl mx-auto">
           Join EACNA today and be part of our mission to improve neurological care for children in East Africa.
@@ -291,7 +269,7 @@ const HomePage = () => {
           <Button 
             variant="outline" 
             size="lg"
-            className="border-white text-white hover:bg-white hover:text-secondary-700"
+            className="border-blue text-primary hover:bg-white hover:text-secondary-700"
             href="#"
           >
             Support Our Work <ExternalLink className="ml-2 h-5 w-5" />

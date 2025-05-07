@@ -608,25 +608,34 @@ const MembershipPage = () => {
 
   return (
     <>
-      {/* Hero Section */}
+    {/* Hero Section */}
       <section className="relative bg-accent-500">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-accent-600 to-accent-400 opacity-90"></div>
+          {/* Updated Gradient */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to right, #4A154B, #2E1A47, #1E3A8A)',
+              opacity: 0.8,
+            }}
+          ></div>
+          
+          {/* Background Image */}
           <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center mix-blend-overlay"></div>
         </div>
-        
+
         <div className="container-custom relative py-20 lg:py-28">
           <motion.h1 
-            className="text-3xl md:text-5xl font-bold mb-6 max-w-3xl text-primary-900"
+            className="text-3xl md:text-5xl font-bold mb-6 max-w-3xl text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             Join EACNA
           </motion.h1>
-          
+
           <motion.p 
-            className="text-lg max-w-2xl mb-8 text-primary-800"
+            className="text-lg max-w-2xl mb-8 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -634,7 +643,7 @@ const MembershipPage = () => {
             By joining our network, you become part of a community of paediatric neurologists, researchers and allied 
             health professionals dedicated to improving neurological care for children across East Africa.
           </motion.p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -650,7 +659,7 @@ const MembershipPage = () => {
           </motion.div>
         </div>
       </section>
-      
+
       {/* Membership Categories */}
       <Section>
         <div className="text-center mb-12">

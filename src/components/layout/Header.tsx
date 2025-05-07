@@ -74,18 +74,18 @@ const Header = () => {
             ))}
 
             {/* Search Bar */}
-            <div className="relative ml-4">
+            <div className="relative ml-2">
               <input
                 type="text"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className="w-48 px-4 py-2 text-sm text-gray-900 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="w-36 px-3 py-1.5 text-xs text-gray-900 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
-              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
-              
+              <Search className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
+
               {showSearchResults && (
-                <div className="absolute mt-2 w-64 bg-white rounded-lg shadow-lg py-2 border border-gray-200">
+                <div className="absolute mt-2 w-56 bg-white rounded-lg shadow-lg py-2 border border-gray-200">
                   <div className="px-4 py-2 text-sm text-gray-500">
                     No results found
                   </div>
@@ -94,15 +94,15 @@ const Header = () => {
             </div>
           </nav>
 
-          {/* Button group */}
+          {/* Button group - MODIFIED: smaller buttons for desktop */}
           <div className="hidden lg:flex items-center space-x-2">
             <Link 
               to="/membership" 
-              className="btn btn-primary"
+              className="btn btn-primary px-3 py-1.5 text-xs"
             >
               Join/Renew
             </Link>
-            <button className="btn border-primary-600 text-primary-600 hover:bg-primary-50">
+            <button className="btn border-primary-600 text-primary-600 hover:bg-primary-50 px-3 py-1.5 text-xs">
               Login
             </button>
           </div>

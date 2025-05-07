@@ -2,6 +2,16 @@ import { motion } from 'framer-motion';
 import { Shield, Heart, Lightbulb, Globe, GraduationCap, Users } from 'lucide-react';
 import Section from '../components/common/Section';
 import Button from '../components/common/Button';
+//import PartnersSection from '../components/common/PartnersSection';
+import OurReach from '../components/common/OurReach';
+import agakhan from "../assets/agakhan.jpg";
+import cnf from "../assets/cnf.webp";
+import kpa from "../assets/kpa.jpg";
+import pat from "../assets/pat.jpg";
+import uon from "../assets/uon.jpg";
+import who from "../assets/who.png";
+import amref from "../assets/amref.png";
+import moh from "../assets/moh.jpg";
 
 const AboutPage = () => {
   const fadeIn = {
@@ -23,14 +33,47 @@ const AboutPage = () => {
     }
   };
 
-  // Partner logos
   const partners = [
-    { id: 1, name: "Gertrude's Hospital", logo: "https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=600" },
-    { id: 2, name: "Kenya Paediatric Association", logo: "https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=600" },
-    { id: 3, name: "British Paediatric Neurology Association", logo: "https://images.pexels.com/photos/5407214/pexels-photo-5407214.jpeg?auto=compress&cs=tinysrgb&w=600" },
-    { id: 4, name: "Africa Child Neurology Association", logo: "https://images.pexels.com/photos/5407222/pexels-photo-5407222.jpeg?auto=compress&cs=tinysrgb&w=600" },
-    { id: 5, name: "Global Health Partnerships", logo: "https://images.pexels.com/photos/5407214/pexels-photo-5407214.jpeg?auto=compress&cs=tinysrgb&w=600" },
-    { id: 6, name: "International League Against Epilepsy", logo: "https://images.pexels.com/photos/5407222/pexels-photo-5407222.jpeg?auto=compress&cs=tinysrgb&w=600" },
+    {
+      id: 1,
+      name: "Kenya Pediatric Association (KPA)",
+      logo: kpa,
+    },
+    {
+      id: 2,
+      name: "University of Nairobi (Kenya)",
+      logo: uon,
+    },
+    {
+      id: 3,
+      name: "Tanzania Pediatric Association (TPA)",
+      logo: pat,
+    },
+    {
+      id: 4,
+      name: "Aga Khan University Hospital (Kenya, Uganda, Tanzania)",
+      logo: agakhan,
+    },
+    {
+      id: 5,
+      name: "World Health Organization (WHO) - Africa",
+      logo: who,
+    },
+    {
+      id: 6,
+      name: "Child Neurology Foundation (CNF)",
+      logo: cnf,
+    },
+    {
+      id: 7,
+      name: "Amref Health Africa",
+      logo: amref,
+    },
+    {
+      id: 8,
+      name: "Ministry of Health (Kenya)",
+      logo: moh,
+    },
   ];
 
   const values = [
@@ -178,129 +221,50 @@ const AboutPage = () => {
         </motion.div>
       </Section>
       
-      {/* History Timeline */}
-      <Section background="white">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary-800">Our Journey</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Tracing the growth and development of the East African Child Neurology Association.
-          </p>
-        </div>
-        
-        <div className="relative border-l-2 border-primary-200 ml-4 md:ml-0 md:mx-auto md:max-w-3xl pl-8 md:pl-0">
-          {/* Timeline items */}
-          <div className="mb-12 md:grid md:grid-cols-2 md:gap-8 md:items-center">
-            <div className="md:text-right md:pr-8 relative">
-              <div className="absolute left-[-41px] md:left-auto md:right-[-41px] top-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <h3 className="text-xl font-bold text-primary-700">2022</h3>
-              <h4 className="font-semibold text-primary-600 mb-2">Foundation</h4>
-            </div>
-            <div>
-              <p className="text-gray-700">
-                EACNA was established by a dedicated group of professionals committed to improving neurological
-                care for children across East Africa.
-              </p>
-            </div>
-          </div>
-          
-          <div className="mb-12 md:grid md:grid-cols-2 md:gap-8 md:items-center">
-            <div className="md:order-2 md:text-left md:pl-8 relative">
-              <div className="absolute left-[-41px] md:left-[-41px] top-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <h3 className="text-xl font-bold text-primary-700">2022</h3>
-              <h4 className="font-semibold text-primary-600 mb-2">First Annual Conference</h4>
-            </div>
-            <div className="md:order-1 md:text-right">
-              <p className="text-gray-700">
-                The inaugural EACNA conference brought together experts from across East Africa to share knowledge
-                and establish collaborative networks.
-              </p>
-            </div>
-          </div>
-          
-          <div className="mb-12 md:grid md:grid-cols-2 md:gap-8 md:items-center">
-            <div className="md:text-right md:pr-8 relative">
-              <div className="absolute left-[-41px] md:left-auto md:right-[-41px] top-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <h3 className="text-xl font-bold text-primary-700">2023</h3>
-              <h4 className="font-semibold text-primary-600 mb-2">PET Training Launch</h4>
-            </div>
-            <div>
-              <p className="text-gray-700">
-                EACNA launched the Paediatric Epilepsy Training (PET) program in collaboration with the British
-                Paediatric Neurology Association.
-              </p>
-            </div>
-          </div>
-          
-          <div className="md:grid md:grid-cols-2 md:gap-8 md:items-center">
-            <div className="md:order-2 md:text-left md:pl-8 relative">
-              <div className="absolute left-[-41px] md:left-[-41px] top-0 w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <h3 className="text-xl font-bold text-primary-700">2024</h3>
-              <h4 className="font-semibold text-primary-600 mb-2">Expanding Reach</h4>
-            </div>
-            <div className="md:order-1 md:text-right">
-              <p className="text-gray-700">
-                EACNA continues to grow, expanding its impact through new partnerships, research initiatives, and
-                training programs across East Africa.
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
-      
-      {/* Partners Section */}
-      <Section background="light">
+      {/* Partners Section - With fix for small screens */}
+      <Section>
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary-800">Our Partners</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            We collaborate with leading organizations to advance pediatric neurology care in East Africa.
+            We collaborate with leading healthcare institutions, associations, and organizations across East Africa.
           </p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-          {partners.map(partner => (
-            <div key={partner.id} className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img 
-                src={partner.logo} 
-                alt={`${partner.name} logo`} 
-                className="h-16 object-contain grayscale hover:grayscale-0 transition-all"
-              />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+          {partners.map((partner) => (
+            <div 
+              key={partner.id} 
+              className="bg-white rounded-lg p-4 shadow-card hover:shadow-card-hover transition-shadow duration-300 flex flex-col items-center justify-center"
+            >
+              <div className="h-20 flex items-center justify-center mb-4">
+                <img 
+                  src={partner.logo} 
+                  alt={partner.name} 
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+              <p className="text-center text-sm text-gray-700">{partner.name}</p>
             </div>
           ))}
         </div>
       </Section>
       
-      {/* CTA Section */}
-      <Section background="primary" className="text-center text-white">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6">Join Our Mission</h2>
-        <p className="text-xl mb-8 max-w-2xl mx-auto">
-          Together, we can transform pediatric neurological care in East Africa.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+      {/* Our Reach Section - Replacing the CTA/Join Our Mission section */}
+      <OurReach />
+      
+      {/* Add a small call to action at the bottom */}
+      <div className="bg-primary-800 py-8 text-center text-white">
+        <div className="container mx-auto px-4">
           <Button 
             variant="accent" 
             size="lg" 
             to="/membership"
+            className="mx-auto"
           >
             Become a Member
           </Button>
-          <Button 
-            variant="outline"
-            size="lg"
-            to="/contact"
-            className="border-white text-white hover:bg-white hover:text-primary-700"
-          >
-            Contact Us
-          </Button>
         </div>
-      </Section>
+      </div>
     </>
   );
 };
