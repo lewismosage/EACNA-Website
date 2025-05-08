@@ -605,7 +605,7 @@ const MemberPortal = () => {
                       <UpcomingEvent key={event.id} event={event} />
                     ))}
                     <Link 
-                      to="/portal/events" 
+                      to="/events" 
                       className="text-sm font-medium text-primary-600 hover:text-primary-700 block text-center mt-2"
                     >
                       View All Events

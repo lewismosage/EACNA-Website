@@ -27,6 +27,19 @@ const Login = () => {
     }
 
     setIsLoading(true);
+
+    try {
+      // Simulate API call for login
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulated delay
+
+      // Navigate to the member portal after successful login
+      navigate("/member-portal");
+    } catch (error) {
+      console.error("Login failed:", error);
+      setError("Invalid email or password. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -34,9 +47,7 @@ const Login = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-primary-700">
-              EACNA
-            </span>
+            <span className="text-2xl font-bold text-primary-700">EACNA</span>
           </Link>
         </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
