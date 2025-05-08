@@ -10,6 +10,8 @@ import GalleryPage from './pages/GalleryPage';
 import FindSpecialistPage from './pages/FindSpecialistPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
+import RenewMembershipPage from './pages/RenewMembershipPage';
+import JoinDirectory from './pages/JoinDirectoryForm';
 
 function App() {
   return (
@@ -24,7 +26,12 @@ function App() {
         <Route path="gallery" element={<GalleryPage />} />
         <Route path="find-specialist" element={<FindSpecialistPage />} />
         <Route path="contact" element={<ContactPage />} />
+        <Route path="contact" element={<ContactPage />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="renew-membership" element={<RenewMembershipPage />} />
+        <Route path="join-directory" element={<JoinDirectory />} />
+
+
       </Route>
     </Routes>
   );

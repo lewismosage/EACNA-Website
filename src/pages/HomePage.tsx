@@ -134,11 +134,11 @@ const HomePage = () => {
             </Button>
           </div>
           <div className="relative h-full min-h-[400px]">
-            <img 
-              src="https://images.pexels.com/photos/8460428/pexels-photo-8460428.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-              alt="Medical professionals discussing child neurology" 
-              className="rounded-lg shadow-xl object-cover h-full w-full"
-            />
+          <img 
+            src="https://pikwizard.com/pw/medium/470c104ec96ab6f6283147eff9dfdd0c.jpg" 
+            alt="Doctor examining a child patient at clinic" 
+            className="rounded-lg shadow-xl object-cover h-full w-full"
+           />
             <div className="absolute -bottom-6 -left-6 bg-accent-500 rounded-lg p-6 shadow-lg max-w-xs">
               <p className="text-primary-900 font-semibold">
                 "We believe every child in East Africa deserves access to quality neurological care."
@@ -264,16 +264,9 @@ const HomePage = () => {
             size="lg" 
             to="/membership"
           >
-            Become a Member
+            Join EACNA Today
           </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-blue text-primary hover:bg-white hover:text-secondary-700"
-            href="#"
-          >
-            Support Our Work <ExternalLink className="ml-2 h-5 w-5" />
-          </Button>
+          
         </div>
       </Section>
     </>

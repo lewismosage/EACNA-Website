@@ -425,19 +425,12 @@ const FindSpecialistPage = () => {
                 <Button 
                   variant="accent" 
                   size="lg" 
-                  to="/membership"
+                  href="join-directory"
                   className="text-primary-900"
                 >
                   Join Our Directory
                 </Button>
-                <Button 
-                  variant="outline"
-                  size="lg"
-                  href="#"
-                  className="border-white text-white hover:bg-white hover:text-primary-700"
-                >
-                  Learn More <ExternalLink className="ml-2 h-5 w-5" />
-                </Button>
+                
               </div>
             </div>
             <div className="hidden md:block">

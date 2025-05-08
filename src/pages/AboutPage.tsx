@@ -157,9 +157,9 @@ const AboutPage = () => {
           </div>
           
           <div className="relative">
-            <img 
-              src="https://images.pexels.com/photos/8460554/pexels-photo-8460554.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-              alt="EACNA team members in discussion" 
+          <img 
+              src="https://www.shutterstock.com/image-photo/pediatrician-doctor-consulting-black-kid-600nw-2197738017.jpg" 
+              alt="Pediatrician consulting child" 
               className="rounded-lg shadow-xl w-full h-auto"
             />
             <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-white p-4 md:p-6 rounded-lg shadow-lg max-w-xs">
