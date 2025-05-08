@@ -104,7 +104,7 @@ const HomePage = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <Button variant="accent" size="lg" to="/membership">
-              Become a Member
+             Join EACNA Today
             </Button>
             <Button variant="outline" size="lg" to="/about" className="border-white text-white hover:bg-white hover:text-primary-800">
               Learn More
