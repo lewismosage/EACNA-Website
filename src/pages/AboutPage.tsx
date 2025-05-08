@@ -1,17 +1,15 @@
 import { motion } from 'framer-motion';
-import { Shield, Heart, Lightbulb, Globe, GraduationCap, Users } from 'lucide-react';
+import { ShieldCheck, Users, Scale, GraduationCap, Lightbulb } from 'lucide-react';
 import Section from '../components/common/Section';
 import Button from '../components/common/Button';
-//import PartnersSection from '../components/common/PartnersSection';
 import OurReach from '../components/common/OurReach';
-import agakhan from "../assets/agakhan.jpg";
-import cnf from "../assets/cnf.webp";
+import ACNA from "../assets/ACNA.jpg";
+import ILAE from "../assets/ILAE.png";
 import kpa from "../assets/kpa.jpg";
-import pat from "../assets/pat.jpg";
-import uon from "../assets/uon.jpg";
-import who from "../assets/who.png";
-import amref from "../assets/amref.png";
-import moh from "../assets/moh.jpg";
+import BPNA from "../assets/BPNA.webp";
+import gertrudes from "../assets/Gertrudes.webp";
+import GHP from "../assets/GHP.png";
+
 
 const AboutPage = () => {
   const fadeIn = {
@@ -41,71 +39,56 @@ const AboutPage = () => {
     },
     {
       id: 2,
-      name: "University of Nairobi (Kenya)",
-      logo: uon,
+      name: "Gertrudes Children Hospital",
+      logo: gertrudes,
     },
     {
       id: 3,
-      name: "Tanzania Pediatric Association (TPA)",
-      logo: pat,
+      name: "British Paediatric Neurology Association",
+      logo: BPNA,
     },
     {
       id: 4,
-      name: "Aga Khan University Hospital (Kenya, Uganda, Tanzania)",
-      logo: agakhan,
+      name: "Africa Child Neurology Association",
+      logo: ACNA,
     },
     {
       id: 5,
-      name: "World Health Organization (WHO) - Africa",
-      logo: who,
+      name: "Global Health Partnerships",
+      logo: GHP,
     },
     {
       id: 6,
-      name: "Child Neurology Foundation (CNF)",
-      logo: cnf,
-    },
-    {
-      id: 7,
-      name: "Amref Health Africa",
-      logo: amref,
-    },
-    {
-      id: 8,
-      name: "Ministry of Health (Kenya)",
-      logo: moh,
+      name: "International League Against Epilepsy",
+      logo: ILAE,
     },
   ];
 
   const values = [
     {
-      icon: <Shield className="h-6 w-6" />,
+      icon: <ShieldCheck className="h-6 w-6" />,
       title: "Excellence",
-      description: "We strive for the highest standards in pediatric neurology care."
+      description: "We strive for the highest standards in paediatric neurological care, research, and education."
     },
     {
-      icon: <Heart className="h-6 w-6" />,
-      title: "Compassion",
-      description: "We approach our work with empathy and understanding for children and families."
+      icon: <Users className="h-6 w-6" />,
+      title: "Collaboration",
+      description: "We foster partnerships and shared learning across borders, disciplines, and communities."
+    },
+    {
+      icon: <Scale className="h-6 w-6" />,
+      title: "Integrity",
+      description: "We uphold honesty, transparency, and accountability in everything we do."
+    },
+    {
+      icon: <GraduationCap className="h-6 w-6" />,
+      title: "Capacity Building",
+      description: "We invest in developing skilled professionals to strengthen child neurology across East Africa."
     },
     {
       icon: <Lightbulb className="h-6 w-6" />,
       title: "Innovation",
-      description: "We embrace new ideas and approaches to advance pediatric neurology."
-    },
-    {
-      icon: <Globe className="h-6 w-6" />,
-      title: "Collaboration",
-      description: "We work together across borders to achieve our shared mission."
-    },
-    {
-      icon: <GraduationCap className="h-6 w-6" />,
-      title: "Education",
-      description: "We promote continuous learning and professional development."
-    },
-    {
-      icon: <Users className="h-6 w-6" />,
-      title: "Inclusivity",
-      description: "We value diversity and ensure access to care for all children."
+      description: "We embrace new ideas, technologies, and research to improve outcomes in child neurology."
     }
   ];
 
@@ -221,7 +204,7 @@ const AboutPage = () => {
         </motion.div>
       </Section>
       
-      {/* Partners Section - With fix for small screens */}
+      {/* Partners Section - Horizontal Scrolling */}
       <Section>
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-primary-800">Our Partners</h2>
@@ -230,22 +213,38 @@ const AboutPage = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          {partners.map((partner) => (
-            <div 
-              key={partner.id} 
-              className="bg-white rounded-lg p-4 shadow-card hover:shadow-card-hover transition-shadow duration-300 flex flex-col items-center justify-center"
-            >
-              <div className="h-20 flex items-center justify-center mb-4">
-                <img 
-                  src={partner.logo} 
-                  alt={partner.name} 
-                  className="max-h-full max-w-full object-contain"
-                />
+        <div className="relative overflow-hidden py-4">
+          <motion.div
+            className="flex"
+            animate={{
+              x: [0, -1000],
+              transition: {
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 30,
+                  ease: "linear",
+                },
+              },
+            }}
+          >
+            {/* Duplicate the partners array to create seamless loop */}
+            {[...partners, ...partners].map((partner, index) => (
+              <div 
+                key={`${partner.id}-${index}`}
+                className="flex-shrink-0 mx-4 w-40 h-32 flex flex-col items-center justify-center"
+              >
+                <div className="h-20 w-full flex items-center justify-center mb-2">
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name} 
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+                <p className="text-center text-sm text-gray-700">{partner.name}</p>
               </div>
-              <p className="text-center text-sm text-gray-700">{partner.name}</p>
-            </div>
-          ))}
+            ))}
+          </motion.div>
         </div>
       </Section>
       

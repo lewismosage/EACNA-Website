@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import TrainingPage from './pages/TrainingPage';
 import MembershipPage from './pages/MembershipPage';
+import Login from './pages/Login';
 import ResourcesPage from './pages/ResourcesPage';
 import GalleryPage from './pages/GalleryPage';
 import FindSpecialistPage from './pages/FindSpecialistPage';
@@ -18,6 +19,7 @@ function App() {
         <Route path="about" element={<AboutPage />} />
         <Route path="training" element={<TrainingPage />} />
         <Route path="membership" element={<MembershipPage />} />
+        <Route path="login" element={<Login />} />
         <Route path="resources" element={<ResourcesPage />} />
         <Route path="gallery" element={<GalleryPage />} />
         <Route path="find-specialist" element={<FindSpecialistPage />} />

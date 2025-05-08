@@ -102,9 +102,12 @@ const Header = () => {
             >
               Join/Renew
             </Link>
-            <button className="btn border-primary-600 text-primary-600 hover:bg-primary-50 px-3 py-1.5 text-xs">
+            <Link 
+              to="/login" 
+              className="btn border-primary-600 text-primary-600 hover:bg-primary-50 px-3 py-1.5 text-xs"
+            >
               Login
-            </button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -164,9 +167,13 @@ const Header = () => {
               >
                 Join/Renew
               </Link>
-              <button className="btn border-primary-600 text-primary-600 hover:bg-primary-50">
+              <Link 
+                to="/login" 
+                className="btn border-primary-600 text-primary-600 hover:bg-primary-50"
+                onClick={closeMenu}
+              >
                 Login
-              </button>
+              </Link>
             </div>
           </nav>
         </div>

@@ -405,42 +405,51 @@ const FindSpecialistPage = () => {
       </Section>
       
       {/* Join Directory CTA */}
-      <Section background="primary" className="text-white">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Are You a Specialist?</h2>
-            <p className="text-lg mb-6 text-white/90">
-              If you're a pediatric neurology specialist or related healthcare professional in East Africa,
-              join our directory to increase your visibility and connect with patients and colleagues.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                variant="accent" 
-                size="lg" 
-                to="/membership"
-                className="text-primary-900"
-              >
-                Join Our Directory
-              </Button>
-              <Button 
-                variant="outline"
-                size="lg"
-                href="#"
-                className="border-white text-white hover:bg-white hover:text-primary-700"
-              >
-                Learn More <ExternalLink className="ml-2 h-5 w-5" />
-              </Button>
+      <section className="relative bg-primary-800 text-white">
+        {/* Background Overlay */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-900 to-primary-700 opacity-90"></div>
+          <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center mix-blend-overlay"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative container-custom py-16">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">Are You a Specialist?</h2>
+              <p className="text-lg mb-6 text-white/90">
+                If you're a pediatric neurology specialist or related healthcare professional in East Africa,
+                join our directory to increase your visibility and connect with patients and colleagues.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  variant="accent" 
+                  size="lg" 
+                  to="/membership"
+                  className="text-primary-900"
+                >
+                  Join Our Directory
+                </Button>
+                <Button 
+                  variant="outline"
+                  size="lg"
+                  href="#"
+                  className="border-white text-white hover:bg-white hover:text-primary-700"
+                >
+                  Learn More <ExternalLink className="ml-2 h-5 w-5" />
+                </Button>
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <img 
+                src="https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                alt="Medical professional" 
+                className="rounded-lg shadow-lg"
+              />
             </div>
           </div>
-          <div className="hidden md:block">
-            <img 
-              src="https://images.pexels.com/photos/3938023/pexels-photo-3938023.jpeg?auto=compress&cs=tinysrgb&w=600" 
-              alt="Medical professional" 
-              className="rounded-lg shadow-lg"
-            />
-          </div>
         </div>
-      </Section>
+      </section>
     </>
   );
 };

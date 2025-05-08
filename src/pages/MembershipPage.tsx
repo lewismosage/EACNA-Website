@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { UserPlus, CheckCircle, BookOpen, Award, Users, GraduationCap } from 'lucide-react';
+import { UserPlus, CheckCircle, AlertCircle, BookOpen, Award, Users, GraduationCap, Eye, EyeOff } from 'lucide-react';
 import Section from '../components/common/Section';
 import Button from '../components/common/Button';
 import Card, { CardContent } from '../components/common/Card';
@@ -27,11 +27,45 @@ type FormData = {
   certifyInfo: boolean;
   consentData: boolean;
   paymentMethod: string;
+  // Add missing password fields to the FormData type
+  password: string;
+  confirmPassword: string;
+};
+
+// Password validation function
+const validatePassword = (password: string) => {
+  const minLength = password.length >= 8;
+  const hasUppercase = /[A-Z]/.test(password);
+  const hasLowercase = /[a-z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+  const hasSpecialChar = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password);
+
+  return {
+    minLength,
+    hasUppercase,
+    hasLowercase,
+    hasNumber,
+    hasSpecialChar,
+    isValid: minLength && hasUppercase && hasLowercase && hasNumber && hasSpecialChar,
+  };
 };
 
 const MembershipPage = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  
+  const { register, handleSubmit, control, formState: { errors } } = useForm<FormData>();
+  
+  // Use proper useWatch hook with control
+  const watchedPassword = useWatch({
+    control,
+    name: 'password',
+    defaultValue: ''
+  });
+  
+  // Calculate password strength when password changes
+  const passwordStrength = validatePassword(watchedPassword);
   
   const nextStep = () => setCurrentStep(prev => prev + 1);
   const prevStep = () => setCurrentStep(prev => prev - 1);
@@ -332,6 +366,124 @@ const MembershipPage = () => {
               </div>
             </div>
             
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="password">Password</label>
+                <div className="relative">
+                  <input 
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    className={`w-full px-4 py-2 border rounded-md focus:ring focus:ring-primary-200 focus:border-primary-500 ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+                    {...register('password', { 
+                      required: true,
+                      validate: (value) => validatePassword(value).isValid || "Password does not meet requirements"
+                    })}
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-5 w-5 text-gray-400" />
+                    ) : (
+                      <Eye className="h-5 w-5 text-gray-400" />
+                    )}
+                  </button>
+                </div>
+                {errors.password && <p className="mt-1 text-sm text-red-600">
+                  {errors.password.type === 'required' ? 'Password is required' : errors.password.message}
+                </p>}
+                
+                {watchedPassword && (
+                  <div className="mt-2">
+                    <p className="text-xs text-gray-500 mb-1">Password must contain:</p>
+                    <ul className="space-y-1">
+                      <li className="flex items-center text-xs">
+                        {passwordStrength.minLength ? (
+                          <CheckCircle className="h-3 w-3 text-green-500 mr-1" />
+                        ) : (
+                          <AlertCircle className="h-3 w-3 text-gray-300 mr-1" />
+                        )}
+                        <span className={passwordStrength.minLength ? "text-green-600" : "text-gray-500"}>
+                          At least 8 characters
+                        </span>
+                      </li>
+                      <li className="flex items-center text-xs">
+                        {passwordStrength.hasUppercase ? (
+                          <CheckCircle className="h-3 w-3 text-green-500 mr-1" />
+                        ) : (
+                          <AlertCircle className="h-3 w-3 text-gray-300 mr-1" />
+                        )}
+                        <span className={passwordStrength.hasUppercase ? "text-green-600" : "text-gray-500"}>
+                          At least one uppercase letter
+                        </span>
+                      </li>
+                      <li className="flex items-center text-xs">
+                        {passwordStrength.hasLowercase ? (
+                          <CheckCircle className="h-3 w-3 text-green-500 mr-1" />
+                        ) : (
+                          <AlertCircle className="h-3 w-3 text-gray-300 mr-1" />
+                        )}
+                        <span className={passwordStrength.hasLowercase ? "text-green-600" : "text-gray-500"}>
+                          At least one lowercase letter
+                        </span>
+                      </li>
+                      <li className="flex items-center text-xs">
+                        {passwordStrength.hasNumber ? (
+                          <CheckCircle className="h-3 w-3 text-green-500 mr-1" />
+                        ) : (
+                          <AlertCircle className="h-3 w-3 text-gray-300 mr-1" />
+                        )}
+                        <span className={passwordStrength.hasNumber ? "text-green-600" : "text-gray-500"}>
+                          At least one number
+                        </span>
+                      </li>
+                      <li className="flex items-center text-xs">
+                        {passwordStrength.hasSpecialChar ? (
+                          <CheckCircle className="h-3 w-3 text-green-500 mr-1" />
+                        ) : (
+                          <AlertCircle className="h-3 w-3 text-gray-300 mr-1" />
+                        )}
+                        <span className={passwordStrength.hasSpecialChar ? "text-green-600" : "text-gray-500"}>
+                          At least one special character
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="confirmPassword">Confirm Password</label>
+                <div className="relative">
+                  <input 
+                    id="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
+                    className={`w-full px-4 py-2 border rounded-md focus:ring focus:ring-primary-200 focus:border-primary-500 ${errors.confirmPassword ? 'border-red-500' : 'border-gray-300'}`}
+                    {...register('confirmPassword', { 
+                      required: true,
+                      validate: value => value === watchedPassword || "Passwords do not match"
+                    })}
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  >
+                    {showConfirmPassword ? (
+                      <EyeOff className="h-5 w-5 text-gray-400" />
+                    ) : (
+                      <Eye className="h-5 w-5 text-gray-400" />
+                    )}
+                  </button>
+                </div>
+                {errors.confirmPassword && <p className="mt-1 text-sm text-red-600">
+                  {errors.confirmPassword.message || "Confirm password is required"}
+                </p>}
+              </div>
+            </div>
+            
             <div className="flex justify-end pt-4">
               <Button onClick={nextStep}>
                 Continue to Professional Information
@@ -608,7 +760,7 @@ const MembershipPage = () => {
 
   return (
     <>
-    {/* Hero Section */}
+      {/* Hero Section */}
       <section className="relative bg-accent-500">
         <div className="absolute inset-0 overflow-hidden">
           {/* Updated Gradient */}
@@ -655,6 +807,22 @@ const MembershipPage = () => {
               href="#membership-form"
             >
               Apply for Membership <UserPlus className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
+
+          {/* Renew Membership Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Button 
+              variant="secondary" 
+              size="sm" 
+              href="#renew-membership-form"
+              className="mt-4"
+            >
+              Renew Membership
             </Button>
           </motion.div>
         </div>
@@ -809,18 +977,17 @@ const MembershipPage = () => {
       </Section>
       
       {/* Member Benefits */}
-      <Section background="primary" className="text-white">
+      <Section className="bg-teal-800 text-white">  
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Member Benefits</h2>
           <p className="text-white/90 max-w-2xl mx-auto">
-            As a member of EACNA, you gain access to a wide range of opportunities designed to advance your career, 
-            enhance your clinical skills, and build lasting regional and international networks.
+            As a member of EACNA, you gain access to a wide range of opportunities...
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
-            <div key={index} className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
+            <div key={index} className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20 hover:bg-white/20 transition-all">
               <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-4 text-white">
                 {benefit.icon}
               </div>
